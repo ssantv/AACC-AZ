@@ -181,15 +181,26 @@ export default function App() {
       </main>
       <footer className="site-footer">
         <div className="wrap footer-main">
-          <Friends />
+          <div className="footer-identity">
+            <strong>ACI Zamora</strong>
+            <span>Asociación de Altas Capacidades Intelectuales de Zamora</span>
+            <span>Todos los derechos reservados</span>
+
+          </div>
+          <div className="footer-actions">
+            <div className="footer-links">
+              <a href="https://www.instagram.com/acizamora/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.facebook.com/profile.php?id=100088137712325" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="mailto:acizamora22@fma.org" target="_blank" rel="noopener noreferrer">Correo</a>
+              <Friends />
+            </div>
+            <div className="footer-bottom ">
+              <Link to="/privacidad">Política de privacidad</Link> ·{" "}
+              <Link to="/cookies">Política de cookies</Link>
+            </div>
+          </div>
         </div>
-        <div className="wrap footer-bottom">
-          <span>AciZamora · Todos los derechos reservados</span>
-          <span>
-            <Link to="/privacidad">Política de privacidad</Link> ·{" "}
-            <Link to="/cookies">Política de cookies</Link>
-          </span>
-        </div>
+
       </footer>
     </>
   );

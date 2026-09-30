@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const signs = [
   [
@@ -325,44 +326,73 @@ export function Activities() {
 }
 
 export function Friends() {
+  const dialogRef = useRef(null);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === "#amigas") dialogRef.current?.showModal();
+    else dialogRef.current?.close();
+  }, [hash]);
+
   return (
-    <div className="footer-institutions" id="amigas">
-      <h2>Instituciones amigas</h2>
-      <div className="friends">
-        <a href="https://www.zamora.es/" target="_blank" rel="noopener noreferrer">
-          Ayuntamiento de Zamora
-        </a>
-        <a href="https://www.diputaciondezamora.es/" target="_blank" rel="noopener noreferrer">
-          Diputación Provincial de Zamora
-        </a>
-        <a href="mailto:arquimedescyl@gmail.com" rel="noopener noreferrer">
-          Arquimedes CyL
-        </a>
-        <a href="https://www.ogmiosasacta.org" target="_blank" rel="noopener noreferrer">
-          Ogmios Asacta · Ávila
-        </a>
-        <a href="https://www.lucidusburgos.org" target="_blank" rel="noopener noreferrer">
-          Lucidus · Burgos
-        </a>
-        <a href="https://www.altascapacidadesleon.org" target="_blank" rel="noopener noreferrer">
-          ALAC · León
-        </a>
-        <a href="https://www.apacpalencia.com" target="_blank" rel="noopener noreferrer">
-          APAC · Palencia
-        </a>
-        <a href="https://www.ateneaaltascapacidades.es" target="_blank" rel="noopener noreferrer">
-          Atenea · Salamanca
-        </a>
-        <a href="mailto:asociacion.segac@gmail.com" rel="noopener noreferrer">
-          SEGAC · Segovia
-        </a>
-        <a href="mailto:altascapacidadessoria@gmail.com" rel="noopener noreferrer">
-          ACSO · Soria
-        </a>
-        <a href="https://www.acylac.org" target="_blank" rel="noopener noreferrer">
-          Acylac · Valladolid
-        </a>
-      </div>
+    <div className="footer-institutions">
+      <button
+        type="button"
+        className="footer-institutions-trigger"
+        onClick={() => dialogRef.current?.showModal()}
+      >
+        Instituciones amigas
+      </button>
+      <dialog
+        ref={dialogRef}
+        id="amigas"
+        className="friends-dialog"
+        aria-labelledby="friends-title"
+      >
+        <div className="friends-dialog-heading">
+          <h2 id="friends-title">Instituciones amigas</h2>
+          <form method="dialog">
+            <button type="submit" className="friends-close" aria-label="Cerrar">
+              ×
+            </button>
+          </form>
+        </div>
+        <div className="friends">
+          <a href="https://www.zamora.es/" target="_blank" rel="noopener noreferrer">
+            Ayuntamiento de Zamora
+          </a>
+          <a href="https://www.diputaciondezamora.es/" target="_blank" rel="noopener noreferrer">
+            Diputación Provincial de Zamora
+          </a>
+          <a href="mailto:arquimedescyl@gmail.com" rel="noopener noreferrer">
+            Arquimedes CyL
+          </a>
+          <a href="https://www.ogmiosasacta.org" target="_blank" rel="noopener noreferrer">
+            Ogmios Asacta · Ávila
+          </a>
+          <a href="https://www.lucidusburgos.org" target="_blank" rel="noopener noreferrer">
+            Lucidus · Burgos
+          </a>
+          <a href="https://www.altascapacidadesleon.org" target="_blank" rel="noopener noreferrer">
+            ALAC · León
+          </a>
+          <a href="https://www.apacpalencia.com" target="_blank" rel="noopener noreferrer">
+            APAC · Palencia
+          </a>
+          <a href="https://www.ateneaaltascapacidades.es" target="_blank" rel="noopener noreferrer">
+            Atenea · Salamanca
+          </a>
+          <a href="mailto:asociacion.segac@gmail.com" rel="noopener noreferrer">
+            SEGAC · Segovia
+          </a>
+          <a href="mailto:altascapacidadessoria@gmail.com" rel="noopener noreferrer">
+            ACSO · Soria
+          </a>
+          <a href="https://www.acylac.org" target="_blank" rel="noopener noreferrer">
+            Acylac · Valladolid
+          </a>
+        </div>
+      </dialog>
     </div>
   );
 }

@@ -37,12 +37,18 @@ function PostDetails({ post }) {
           loading="lazy"
         />
       )}
-      <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
-        {post.type === "articulo" ? "Artículo" : "Noticia"}
-      </span>
-      <h3>{post.title}</h3>
-      <p>{post.excerpt}</p>
-      <time dateTime={post.date}>{formatDate(post.date)}</time>
+
+      <div className="post-card-content">
+        <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
+          {post.type === "articulo" ? "Artículo" : "Noticia"}
+        </span>
+
+        <h3>{post.title}</h3>
+
+        <p>{post.excerpt}</p>
+
+        <time dateTime={post.date}>{formatDate(post.date)}</time>
+      </div>
     </>
   );
 }
@@ -123,42 +129,51 @@ export default function News({ posts, loaded, preview = false }) {
           </Link>
         )}
         <dialog ref={dialogRef} onClose={() => setActive(null)}>
-          {active && (
-            <>
-              <button
-                type="button"
-                className="dialog-close"
-                aria-label="Cerrar publicación"
-                onClick={() => dialogRef.current.close()}
-              >
-                &times;
-              </button>
-              <div className="dialog-content">
-                <span className="tag">
-                  {active.type === "articulo" ? "Artículo" : "Noticia"}
-                </span>
-                <h3>{active.title}</h3>
-                <p className="note">{formatDate(active.date)}</p>
-                {active.cover && (
-                  <figure className="post-image">
-                    <img
-                      src={`${active.cover.url}?w=1200&auto=format`}
-                      alt={active.cover.alt || ""}
-                    />
-                  </figure>
-                )}
-                {active.body.length > 0 && (
-                  <div className="mt-4">
-                    <PortableText
-                      value={active.body}
-                      components={portableTextComponents}
-                    />
-                  </div>
-                )}
-              </div>
-            </>
+  {active && (
+    <>
+      <button
+        type="button"
+        className="dialog-close"
+        aria-label="Cerrar publicación"
+        onClick={() => dialogRef.current.close()}
+      >
+        &times;
+      </button>
+
+      <div className="dialog-content">
+        {active.cover && (
+          <figure className="dialog-cover">
+            <img
+              src={`${active.cover.url}?w=1200&auto=format`}
+              alt={active.cover.alt || ""}
+            />
+          </figure>
+        )}
+
+        <div className="dialog-inner">
+          <span className="tag">
+            {active.type === "articulo" ? "Artículo" : "Noticia"}
+          </span>
+
+          <h3>{active.title}</h3>
+
+          <p className="note">
+            {formatDate(active.date)}
+          </p>
+
+          {active.body?.length > 0 && (
+            <div className="dialog-body">
+              <PortableText
+                value={active.body}
+                components={portableTextComponents}
+              />
+            </div>
           )}
-        </dialog>
+        </div>
+      </div>
+    </>
+  )}
+</dialog>
       </div>
     </Container>
   );

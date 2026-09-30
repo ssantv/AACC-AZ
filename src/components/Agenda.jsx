@@ -20,7 +20,7 @@ export default function Agenda({ events, loaded, preview = false }) {
   const [showPast, setShowPast] = useState(false);
   const today = new Date().toLocaleDateString("sv-SE");
   const upcomingEvents = preview
-    ? events.slice(0, 2)
+    ? events.slice(0, 5)
     : events.filter((event) => event.date >= today);
   const pastEvents = preview
     ? []

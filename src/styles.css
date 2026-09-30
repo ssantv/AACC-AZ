@@ -336,7 +336,7 @@ h2 {
 }
 .friends a {
   font-weight: 600;
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: 3px;
   width: 100%;
 }

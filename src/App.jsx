@@ -191,7 +191,7 @@ export default function App() {
             <div className="footer-links">
               <a href="https://www.instagram.com/acizamora/" target="_blank" rel="noopener noreferrer">Instagram</a>
               <a href="https://www.facebook.com/profile.php?id=100088137712325" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="mailto:acizamora22@fma.org" target="_blank" rel="noopener noreferrer">Correo</a>
+              <a href="mailto:acizamora22@gmail.com" target="_blank" rel="noopener noreferrer">Correo</a>
               <Friends />
             </div>
             <div className="footer-bottom ">

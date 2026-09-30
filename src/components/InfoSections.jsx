@@ -335,8 +335,32 @@ export function Friends() {
         <a href="https://www.diputaciondezamora.es/" rel="noopener noreferrer">
           Diputación Provincial de Zamora
         </a>
-        <a href="https://www.acylac.org" rel="noopener noreferrer">
-          Acylac · Altas capacidades en Castilla y León
+        <a href="mailto:arquimedescyl@gmail.com" rel="noopener noreferrer">
+          Arquimedes CyL
+        </a>
+        <a href="ogmiosasacta.org" rel="noopener noreferrer">
+          Ogmios Asacta · Ávila
+        </a>
+        <a href="lucidusburgos.org" rel="noopener noreferrer">
+          Lucidus · Burgos
+        </a>
+        <a href="altascapacidadesleon.org" rel="noopener noreferrer">
+          ALAC · León
+        </a>
+        <a href="apacpalencia.com" rel="noopener noreferrer">
+          APAC · Palencia
+        </a>
+        <a href="ateneaaltascapacidades.es" rel="noopener noreferrer">
+          Atenea · Salamanca
+        </a>
+        <a href="mailto:asociacion.segac@gmail.com" rel="noopener noreferrer">
+          SEGAC · Segovia
+        </a>
+        <a href="mailto:altascapacidadessoria@gmail.com" rel="noopener noreferrer">
+          ACSO · Soria
+        </a>
+        <a href="acylac.org" rel="noopener noreferrer">
+          Acylac · Valladolid
         </a>
       </div>
     </div>

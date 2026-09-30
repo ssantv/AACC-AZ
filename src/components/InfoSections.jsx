@@ -67,7 +67,10 @@ function SectionCards({ items, className }) {
     <div className={className}>
       {items.map(([title, description]) => (
         <div className="card" key={title}>
-          <div className="flex items-center justify-between align-items-center" style={{ paddingBottom: "10px" }}>
+          <div
+            className="flex items-center justify-between align-items-center"
+            style={{ paddingBottom: "10px" }}
+          >
             <h3 style={{ margin: 0 }}>{title}</h3>
             <img
               src="/bombilla.svg"
@@ -307,28 +310,35 @@ export function Signs() {
                 marginBottom: "24px",
               }}
             ></div>
-              <p className="card mb-7">
-                No hay una norma nacional que regule cómo se identifica, así que
-                cada comunidad autónoma lo organiza a su manera.
-                <Ref n={3} /> La ley encarga a las administraciones educativas
-                identificar a este alumnado, valorar sus necesidades pronto y
-                ofrecerle planes de actuación y programas de enriquecimiento.
-                <Ref n={4} />
-              </p>
-            <div className="flex flex-col md:flex-row gap-4 ">
-              <p className="card">
-                La Junta tiene un protocolo de cribado: una prueba para toda la
-                clase, la opinión de las familias y la del profesorado. Si se
-                cumplen las condiciones, se pasa a una evaluación
-                psicopedagógica, que también puede pedir la propia familia.
-                <Ref n={2} /> La detección puede empezar en casa o en el cole, y
-                se concreta en una evaluación hecha por especialistas en
-                orientación educativa.
-                <Ref n={8} />
-              </p>
-              <img src="/formacion.svg" className="w-auto" />
-            </div>
-          </div>
+            <div className="flex flex-col md:flex-row gap-4 items-center">
+  <div className="md:w-4/6">
+    <p className="row card">
+                  No hay una norma nacional que regule cómo se identifica, así
+                  que cada comunidad autónoma lo organiza a su manera.
+                  <Ref n={3} /> La ley encarga a las administraciones educativas
+                  identificar a este alumnado, valorar sus necesidades pronto y
+                  ofrecerle planes de actuación y programas de enriquecimiento.
+                  <Ref n={4} />
+                </p>
+                <p className="row card">
+                  La Junta tiene un protocolo de cribado: una prueba para toda
+                  la clase, la opinión de las familias y la del profesorado. Si
+                  se cumplen las condiciones, se pasa a una evaluación
+                  psicopedagógica, que también puede pedir la propia familia.
+                  <Ref n={2} /> La detección puede empezar en casa o en el cole,
+                  y se concreta en una evaluación hecha por especialistas en
+                  orientación educativa.
+                  <Ref n={8} />
+                </p>
+              </div>
+  <div
+    className="image-container md:w-2/6 shrink-0"
+    style={{ justifyContent: "center", display: "flex" }}
+  >
+    <img src="/formacion.svg" alt="" className="w-100" />
+  </div>
+</div>
+</div>
         </div>
       </section>
       <section className="aacc-section aacc-paper">
@@ -372,9 +382,9 @@ export function Activities() {
                     <img src={`/${icon}`} className="w-50" />
                   </div>
                   <div>
-                <h3>{title}</h3>
-                <p>{description}</p>
-                </div>
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -384,17 +394,22 @@ export function Activities() {
       <section id="socios" className="band">
         <div className="wrap">
           <h2>Hazte socio o socia</h2>
-          <div className="card">
-            <p>
-              AciZamora es una asociación sin ánimo de lucro formada por
-              familias. Cuantas más seamos, más actividades y más voz tendremos
-              ante las instituciones.
-            </p>
-            <p className="mt-4">
-              <Link className="btn mt-6" to="/contacto">
-                Quiero asociarme
-              </Link>
-            </p>
+          <div className="flex items-center">
+            <div className="md:w-2/7">
+              <img src="/asociacion.svg" />
+            </div>
+            <div className="card md:w-5/7">
+              <p>
+                AciZamora es una asociación sin ánimo de lucro formada por
+                familias. Cuantas más seamos, más actividades y más voz
+                tendremos ante las instituciones.
+              </p>
+              <p className="mt-4">
+                <Link className="btn mt-6" to="/contacto">
+                  Quiero asociarme
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </section>

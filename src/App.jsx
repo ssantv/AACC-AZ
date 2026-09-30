@@ -61,6 +61,7 @@ export default function App() {
       title: item.title,
       excerpt: item.summary,
       body: item.body || [],
+      cover: item.cover?.url ? item.cover : null,
       date: item.date,
     }));
   const events = content
@@ -185,13 +186,30 @@ export default function App() {
             <strong>ACI Zamora</strong>
             <span>Asociación de Altas Capacidades Intelectuales de Zamora</span>
             <span>Todos los derechos reservados</span>
-
           </div>
           <div className="footer-actions">
             <div className="footer-links">
-              <a href="https://www.instagram.com/acizamora/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://www.facebook.com/profile.php?id=100088137712325" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="mailto:acizamora22@gmail.com" target="_blank" rel="noopener noreferrer">Correo</a>
+              <a
+                href="https://www.instagram.com/acizamora/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=100088137712325"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
+              <a
+                href="mailto:acizamora22@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Correo
+              </a>
               <Friends />
             </div>
             <div className="footer-bottom ">
@@ -200,7 +218,6 @@ export default function App() {
             </div>
           </div>
         </div>
-
       </footer>
     </>
   );

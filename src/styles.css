@@ -9,6 +9,20 @@
   --sun: #ffd23f;
   --on-violet: #fff;
 }
+.post-image {
+  margin: 1rem 0;
+}
+.post-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.post-image figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 76px;
@@ -376,7 +390,9 @@ footer.site-footer {
   line-height: 1.35;
 }
 .footer-identity strong {
-  font: 400 1.1rem "Bowlby One", sans-serif;
+  font:
+    400 1.1rem "Bowlby One",
+    sans-serif;
 }
 .footer-identity span {
   font-size: 0.82rem;
@@ -581,6 +597,16 @@ footer.site-footer {
   width: 100%;
   display: block;
   text-decoration: none;
+}
+.post-cover {
+  display: block;
+  width: calc(100% + 52px);
+  max-width: none;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin: -26px -26px 18px;
+  border-bottom: 3px solid var(--ink);
+  border-radius: 5px 5px 0 0;
 }
 .post time {
   display: block;

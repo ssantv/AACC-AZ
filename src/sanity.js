@@ -17,7 +17,11 @@ const contentQuery = `
       title,
       date,
       summary,
-      body,
+      "cover": cover{alt, "url": asset->url},
+      body[]{
+        ...,
+        _type == "image" => {alt, caption, "url": asset->url}
+      },
       location,
       registrationUrl
     }

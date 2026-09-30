@@ -10,9 +10,33 @@ function formatDate(date) {
   });
 }
 
+const portableTextComponents = {
+  types: {
+    image: ({ value }) =>
+      value?.url ? (
+        <figure className="post-image">
+          <img
+            src={`${value.url}?w=1200&auto=format`}
+            alt={value.alt || ""}
+            loading="lazy"
+          />
+          {value.caption && <figcaption>{value.caption}</figcaption>}
+        </figure>
+      ) : null,
+  },
+};
+
 function PostDetails({ post }) {
   return (
     <>
+      {post.cover && (
+        <img
+          className="post-cover"
+          src={`${post.cover.url}?w=600&h=340&fit=crop&auto=format`}
+          alt={post.cover.alt || ""}
+          loading="lazy"
+        />
+      )}
       <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
         {post.type === "articulo" ? "Artículo" : "Noticia"}
       </span>
@@ -115,9 +139,20 @@ export default function News({ posts, loaded, preview = false }) {
                 </span>
                 <h3>{active.title}</h3>
                 <p className="note">{formatDate(active.date)}</p>
+                {active.cover && (
+                  <figure className="post-image">
+                    <img
+                      src={`${active.cover.url}?w=1200&auto=format`}
+                      alt={active.cover.alt || ""}
+                    />
+                  </figure>
+                )}
                 {active.body.length > 0 && (
                   <div className="mt-4">
-                    <PortableText value={active.body} />
+                    <PortableText
+                      value={active.body}
+                      components={portableTextComponents}
+                    />
                   </div>
                 )}
               </div>

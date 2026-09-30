@@ -329,28 +329,28 @@ export function Friends() {
     <div className="footer-institutions" id="amigas">
       <h2>Instituciones amigas</h2>
       <div className="friends">
-        <a href="https://www.zamora.es/" rel="noopener noreferrer">
+        <a href="https://www.zamora.es/" target="_blank" rel="noopener noreferrer">
           Ayuntamiento de Zamora
         </a>
-        <a href="https://www.diputaciondezamora.es/" rel="noopener noreferrer">
+        <a href="https://www.diputaciondezamora.es/" target="_blank" rel="noopener noreferrer">
           Diputación Provincial de Zamora
         </a>
         <a href="mailto:arquimedescyl@gmail.com" rel="noopener noreferrer">
           Arquimedes CyL
         </a>
-        <a href="ogmiosasacta.org" rel="noopener noreferrer">
+        <a href="https://www.ogmiosasacta.org" target="_blank" rel="noopener noreferrer">
           Ogmios Asacta · Ávila
         </a>
-        <a href="lucidusburgos.org" rel="noopener noreferrer">
+        <a href="https://www.lucidusburgos.org" target="_blank" rel="noopener noreferrer">
           Lucidus · Burgos
         </a>
-        <a href="altascapacidadesleon.org" rel="noopener noreferrer">
+        <a href="https://www.altascapacidadesleon.org" target="_blank" rel="noopener noreferrer">
           ALAC · León
         </a>
-        <a href="apacpalencia.com" rel="noopener noreferrer">
+        <a href="https://www.apacpalencia.com" target="_blank" rel="noopener noreferrer">
           APAC · Palencia
         </a>
-        <a href="ateneaaltascapacidades.es" rel="noopener noreferrer">
+        <a href="https://www.ateneaaltascapacidades.es" target="_blank" rel="noopener noreferrer">
           Atenea · Salamanca
         </a>
         <a href="mailto:asociacion.segac@gmail.com" rel="noopener noreferrer">
@@ -359,7 +359,7 @@ export function Friends() {
         <a href="mailto:altascapacidadessoria@gmail.com" rel="noopener noreferrer">
           ACSO · Soria
         </a>
-        <a href="acylac.org" rel="noopener noreferrer">
+        <a href="https://www.acylac.org" target="_blank" rel="noopener noreferrer">
           Acylac · Valladolid
         </a>
       </div>

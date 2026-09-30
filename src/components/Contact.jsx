@@ -1,4 +1,5 @@
 import { useForm, ValidationError } from "@formspree/react";
+import { Link } from "react-router-dom";
 
 export default function Contact() {
   const configuredFormId = import.meta.env.VITE_FORMSPREE_ID?.trim();
@@ -100,11 +101,15 @@ export default function Contact() {
                 errors={state.errors}
               />
             </label>
+            <p className="note">
+              No incluyas diagnósticos, informes médicos ni datos que
+              identifiquen a menores en el mensaje.
+            </p>
             <label className="chk">
               <input type="checkbox" name="acepta" value="si" required />
               <span>
-                He leído la <a href="#">política de privacidad</a> y acepto que
-                ACI Zamora use estos datos para contestarme.
+                He leído la <Link to="/privacidad">política de privacidad</Link> y
+                consiento que ACI Zamora use estos datos para contestarme.
               </span>
             </label>
             <button className="btn" type="submit" disabled={state.submitting}>

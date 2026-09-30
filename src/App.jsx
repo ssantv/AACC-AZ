@@ -11,6 +11,7 @@ import Hero from "./components/Hero.jsx";
 import News from "./components/News.jsx";
 import Agenda from "./components/Agenda.jsx";
 import Contact from "./components/Contact.jsx";
+import { CookiePolicy, PrivacyPolicy } from "./components/Legal.jsx";
 import { fetchPublishedContent } from "./sanity.js";
 import {
   About,
@@ -173,6 +174,8 @@ export default function App() {
             element={<Navigate to="/#amigas" replace />}
           />
           <Route path="/contacto" element={<Contact />} />
+          <Route path="/privacidad" element={<PrivacyPolicy />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
@@ -183,8 +186,8 @@ export default function App() {
         <div className="wrap footer-bottom">
           <span>AciZamora · Todos los derechos reservados</span>
           <span>
-            <a href="#">Política de privacidad</a> ·{" "}
-            <a href="#">Política de cookies</a>
+            <Link to="/privacidad">Política de privacidad</Link> ·{" "}
+            <Link to="/cookies">Política de cookies</Link>
           </span>
         </div>
       </footer>

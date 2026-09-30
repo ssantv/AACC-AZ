@@ -29,4 +29,5 @@ El origen `https://aacc-az.pages.dev` ya está permitido en Sanity; añadir cada
 
 - Comprobar que el formulario de Formspree pertenece a vuestra cuenta y recibe mensajes desde el dominio publicado.
 - Verificar que las rutas `/noticias`, `/agenda` y `/contacto` funcionan al abrirlas directamente.
-- Publicar y enlazar las políticas de privacidad y cookies; sus enlaces son marcadores de posición heredados del sitio original.
+- Revisar las políticas de privacidad y cookies si cambian los proveedores, el formulario o el uso de cookies.
+- Eliminar las consultas de Formspree al responderlas y cerrarlas, conforme al plazo indicado en la política de privacidad.

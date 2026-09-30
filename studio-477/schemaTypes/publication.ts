@@ -47,10 +47,39 @@ export const publication = defineType({
       validation: (rule) => rule.required().max(500),
     }),
     defineField({
+      name: 'cover',
+      title: 'Imagen de portada (opcional)',
+      type: 'image',
+      options: {hotspot: true},
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Descripción de la imagen',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+      ],
+    }),
+    defineField({
       name: 'body',
       title: 'Texto',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [
+        {type: 'block'},
+        {
+          type: 'image',
+          options: {hotspot: true},
+          fields: [
+            defineField({
+              name: 'alt',
+              title: 'Descripción de la imagen',
+              type: 'string',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({name: 'caption', title: 'Pie de foto', type: 'string'}),
+          ],
+        },
+      ],
       validation: (rule) => rule.required().min(1),
     }),
   ],

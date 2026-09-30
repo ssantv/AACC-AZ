@@ -82,32 +82,34 @@ export default function News({ posts, loaded, preview = false }) {
             visiblePosts.length === 0 && (
               <p>No hay publicaciones de este tipo.</p>
             )}
-          {visiblePosts.map((post) =>
-            preview ? (
-              <Link className="card post" key={post.id} to="/noticias">
-                <PostDetails post={post} />
-              </Link>
-            ) : (
-              <button
-                type="button"
-                className="card post"
-                key={post.id}
-                onClick={() => setActive(post)}
-              >
-                <PostDetails post={post} />
-              </button>
-            ),
-          )}
+          {visiblePosts.map((post) => (
+            <button
+              type="button"
+              className="card post"
+              key={post.id}
+              onClick={() => setActive(post)}
+            >
+              <PostDetails post={post} />
+            </button>
+          ))}
         </div>
         {preview && (
           <Link className="btn alt preview-link" to="/noticias">
             Ver todas las publicaciones
           </Link>
         )}
-        {!preview && (
-          <dialog ref={dialogRef} onClose={() => setActive(null)}>
-            {active && (
-              <>
+        <dialog ref={dialogRef} onClose={() => setActive(null)}>
+          {active && (
+            <>
+              <button
+                type="button"
+                className="dialog-close"
+                aria-label="Cerrar publicación"
+                onClick={() => dialogRef.current.close()}
+              >
+                &times;
+              </button>
+              <div className="dialog-content">
                 <span className="tag">
                   {active.type === "articulo" ? "Artículo" : "Noticia"}
                 </span>
@@ -118,17 +120,10 @@ export default function News({ posts, loaded, preview = false }) {
                     <PortableText value={active.body} />
                   </div>
                 )}
-                <button
-                  className="btn"
-                  type="button"
-                  onClick={() => dialogRef.current.close()}
-                >
-                  Cerrar
-                </button>
-              </>
-            )}
-          </dialog>
-        )}
+              </div>
+            </>
+          )}
+        </dialog>
       </div>
     </Container>
   );

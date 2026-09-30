@@ -1,6 +1,30 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
+function EventList({ events }) {
+  return events.map((event) => (
+    <li className="card" key={event.id}>
+      <div className="date">
+        <small>{event.month}</small>
+        {event.day}
+      </div>
+      <div>
+        <h3>{event.title}</h3>
+        <p>{event.detail}</p>
+      </div>
+    </li>
+  ));
+}
+
 export default function Agenda({ events, loaded, preview = false }) {
+  const [showPast, setShowPast] = useState(false);
+  const today = new Date().toLocaleDateString("sv-SE");
+  const upcomingEvents = preview
+    ? events.slice(0, 2)
+    : events.filter((event) => event.date >= today);
+  const pastEvents = preview
+    ? []
+    : events.filter((event) => event.date < today).reverse();
   const Container = preview ? "div" : "section";
   return (
     <Container
@@ -14,22 +38,29 @@ export default function Agenda({ events, loaded, preview = false }) {
           <h1 className="page-title">Agenda</h1>
         )}
         <ul className="events">
-          {loaded && events.length === 0 && (
-            <li>No hay eventos programados.</li>
+          {loaded && upcomingEvents.length === 0 && (
+            <li>No hay próximos eventos.</li>
           )}
-          {(preview ? events.slice(0, 2) : events).map((event) => (
-            <li className="card" key={event.id}>
-              <div className="date">
-                <small>{event.month}</small>
-                {event.day}
-              </div>
-              <div>
-                <h3>{event.title}</h3>
-                <p>{event.detail}</p>
-              </div>
-            </li>
-          ))}
+          <EventList events={upcomingEvents} />
         </ul>
+        {!preview && pastEvents.length > 0 && (
+          <>
+            <button
+              type="button"
+              className="btn alt past-events-toggle"
+              aria-expanded={showPast}
+              aria-controls="past-events"
+              onClick={() => setShowPast((open) => !open)}
+            >
+              Eventos pasados
+            </button>
+            <div id="past-events" hidden={!showPast}>
+              <ul className="events">
+                <EventList events={pastEvents} />
+              </ul>
+            </div>
+          </>
+        )}
         {preview && (
           <Link className="btn preview-link" to="/agenda">
             Ver agenda completa

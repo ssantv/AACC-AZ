@@ -23,7 +23,7 @@ Si no se configura, el formulario usa el ID predeterminado de `src/components/Co
 
 En Cloudflare Pages, conectar el repositorio desde la raíz, usar `npm run build` como comando de compilación y `dist` como directorio de salida. Configurar `VITE_FORMSPREE_ID` como variable de entorno de compilación si se usa un formulario distinto del predeterminado. Si Cloudflare elige otra versión de Node, seleccionar Node.js 20.19+ o 22.12+.
 
-Añadir el origen `https://<proyecto>.pages.dev` y cada dominio personalizado a los orígenes CORS permitidos del proyecto Sanity. Publicar contenido en Sanity actualiza la web al recargarla, sin reconstruir Pages. El Studio se despliega por separado para que el equipo edite sin ejecutar nada en local.
+El origen `https://aacc-az.pages.dev` ya está permitido en Sanity; añadir cada dominio personalizado a CORS antes de usarlo. Publicar contenido en Sanity actualiza la web al recargarla, sin reconstruir Pages. El equipo edita en [ACI Zamora Studio](https://aacc-az-studio.sanity.studio/) con su cuenta de Sanity. Para publicar cambios futuros del Studio, ejecutar `npm run deploy` desde `studio-477/`.
 
 ## Antes de publicar
 

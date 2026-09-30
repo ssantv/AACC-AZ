@@ -919,4 +919,20 @@ dialog .btn {
   .friends-dialog .friends {
     grid-template-columns: 1fr;
   }
+  dialog {
+    width: 92%;
+    max-height: calc(100dvh - 48px);
+    border-radius: 12px; /* Opcional: bordes un poco más redondeados para móvil */
+  }
+
+  .dialog-inner {
+    padding: 20px 15px;
+  }
+  
+  dialog p,
+  dialog li {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 }
+

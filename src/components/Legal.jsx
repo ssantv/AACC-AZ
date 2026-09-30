@@ -19,7 +19,8 @@ export function PrivacyPolicy() {
       <p>
         ACI Zamora es la responsable de los datos que facilites en el formulario
         de contacto. Para cualquier consulta sobre privacidad o para ejercer tus
-        derechos, escribe a <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>.
+        derechos, escribe a{" "}
+        <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>.
       </p>
 
       <h2>Datos que recogemos</h2>
@@ -48,8 +49,8 @@ export function PrivacyPolicy() {
         Conservamos las consultas hasta responderlas y cerrarlas, salvo que
         debamos mantener algún dato por una obligación legal. El formulario se
         procesa mediante Formspree, que recibe el contenido que envías. La web
-        se aloja en Cloudflare Pages, consulta contenidos publicados en Sanity
-        y carga tipografías desde Google Fonts; estos proveedores pueden recibir
+        se aloja en Cloudflare Pages, consulta contenidos publicados en Sanity y
+        carga tipografías desde Google Fonts; estos proveedores pueden recibir
         datos técnicos de conexión. Algunos proveedores pueden tratar datos
         fuera del Espacio Económico Europeo. Puedes consultar sus políticas en
         los sitios de{" "}
@@ -61,11 +62,15 @@ export function PrivacyPolicy() {
 
       <h2>Tus derechos</h2>
       <p>
-        Puedes solicitar acceso, rectificación, supresión, limitación u oposición
-        al tratamiento de tus datos, así como retirar tu consentimiento,
-        escribiendo a <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>.
-        También puedes presentar una reclamación ante la{" "}
-        <a href="https://www.aepd.es/">Agencia Española de Protección de Datos</a>.
+        Puedes solicitar acceso, rectificación, supresión, limitación u
+        oposición al tratamiento de tus datos, así como retirar tu
+        consentimiento, escribiendo a{" "}
+        <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>. También puedes
+        presentar una reclamación ante la{" "}
+        <a href="https://www.aepd.es/">
+          Agencia Española de Protección de Datos
+        </a>
+        .
       </p>
     </LegalPage>
   );
@@ -76,9 +81,9 @@ export function CookiePolicy() {
     <LegalPage title="Política de cookies">
       <p>
         Esta web no incorpora herramientas de publicidad ni analítica y no
-        configura cookies de seguimiento desde su código. Esto no impide que
-        los servicios externos necesarios para su funcionamiento utilicen
-        cookies técnicas o traten datos de conexión.
+        configura cookies de seguimiento desde su código. Esto no impide que los
+        servicios externos necesarios para su funcionamiento utilicen cookies
+        técnicas o traten datos de conexión.
       </p>
 
       <h2>Servicios externos</h2>
@@ -97,11 +102,11 @@ export function CookiePolicy() {
 
       <h2>Cómo gestionarlas</h2>
       <p>
-        Puedes consultar, borrar o bloquear cookies desde la configuración de
-        tu navegador. Bloquear cookies técnicas puede afectar al funcionamiento
-        de algunos servicios. Si en el futuro incorporamos cookies no
-        necesarias, actualizaremos esta política y solicitaremos el
-        consentimiento que corresponda antes de utilizarlas.
+        Puedes consultar, borrar o bloquear cookies desde la configuración de tu
+        navegador. Bloquear cookies técnicas puede afectar al funcionamiento de
+        algunos servicios. Si en el futuro incorporamos cookies no necesarias,
+        actualizaremos esta política y solicitaremos el consentimiento que
+        corresponda antes de utilizarlas.
       </p>
       <p>
         Para información sobre los datos enviados desde el formulario, consulta

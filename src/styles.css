@@ -712,7 +712,7 @@ footer.site-footer {
   margin: 28px 0;
 }
 dialog {
-  position: relative;
+  position: fixed;
   width: 80%;
   max-height: calc(100dvh - 32px);
   margin: auto;
@@ -723,6 +723,7 @@ dialog {
   background: var(--card);
   color: var(--ink);
   box-shadow: 8px 8px 0 var(--ink);
+  z-index: 100;
 }
 
 dialog[open] {
@@ -731,6 +732,8 @@ dialog[open] {
 }
 dialog::backdrop {
   background: rgba(22, 19, 43, 0.6);
+  position: fixed;
+  inset: 0;
 }
 .dialog-close {
   position: absolute;

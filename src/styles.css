@@ -484,6 +484,7 @@ footer.site-footer {
 .site-footer .footer-bottom {
   color: var(--ink);
   font-size: 0.8rem;
+    text-align: center;
 }
 .footer-bottom a {
   color: var(--ink);

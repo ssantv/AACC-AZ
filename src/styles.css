@@ -939,5 +939,15 @@ dialog .btn {
     max-height: 45vh;
     height: auto;
   }
+  .dialog-body .post-image,
+  .dialog-body .dialog-image {
+    margin: 0.75rem 0;
+  }
+  .dialog-body p + .post-image,
+  .dialog-body p + .dialog-image,
+  .dialog-body .post-image + p,
+  .dialog-body .dialog-image + p {
+    margin-top: 0.5rem;
+  }
 }
 

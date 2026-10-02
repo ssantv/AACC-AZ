@@ -79,6 +79,7 @@ export default function App() {
       title: item.title,
       location: item.location,
       summary: item.summary,
+      datetime: item.datetime,
     }));
   const ready = loaded && !contentError;
   const upcomingEvents = events.filter(

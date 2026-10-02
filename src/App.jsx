@@ -213,11 +213,7 @@ export default function App() {
               </a>
               <Friends />
             </div>
-<<<<<<< HEAD
-            <div className="footer-bottom mx-auto">
-=======
             <div className="footer-bottom justify-content-between">
->>>>>>> e95caf3791032bc8607add31e751499ec8eafd52
               <Link to="/privacidad">Política de privacidad</Link> ·{" "}
               <Link to="/cookies">Política de cookies</Link>
             </div>

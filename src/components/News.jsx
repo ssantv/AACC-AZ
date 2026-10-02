@@ -30,29 +30,16 @@ const portableTextComponents = {
 function PostDetails({ post }) {
   return (
     <>
-<<<<<<< HEAD
-      {post.cover?.asset && (
-        <img
-          className="post-cover"
-          src={imageUrl(post.cover).width(800).height(450).fit("crop").auto("format").url()}
-=======
+
       {post.cover && (
         <img
           className="post-cover"
           src={`${post.cover.url}?w=600&h=340&fit=crop&auto=format`}
->>>>>>> e95caf3791032bc8607add31e751499ec8eafd52
           alt={post.cover.alt || ""}
           loading="lazy"
         />
       )}
-<<<<<<< HEAD
-      <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
-        {post.type === "articulo" ? "Artículo" : "Noticia"}
-      </span>
-      <h3>{post.title}</h3>
-      <p>{post.excerpt}</p>
-      <time dateTime={post.date}>{formatDate(post.date)}</time>
-=======
+
 
       <div className="post-card-content">
         <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
@@ -65,7 +52,6 @@ function PostDetails({ post }) {
 
         <time dateTime={post.date}>{formatDate(post.date)}</time>
       </div>
->>>>>>> e95caf3791032bc8607add31e751499ec8eafd52
     </>
   );
 }
@@ -146,55 +132,7 @@ export default function News({ posts, loaded, preview = false }) {
           </Link>
         )}
         <dialog ref={dialogRef} onClose={() => setActive(null)}>
-<<<<<<< HEAD
-          {active && (
-            <>
-              <button
-                type="button"
-                className="dialog-close"
-                aria-label="Cerrar publicación"
-                onClick={() => dialogRef.current.close()}
-              >
-                &times;
-              </button>
-              <div className="dialog-content">
-                <span className="tag">
-                  {active.type === "articulo" ? "Artículo" : "Noticia"}
-                </span>
-                <h3>{active.title}</h3>
-                <p className="note">{formatDate(active.date)}</p>
-                {active.cover?.asset && (
-                  <img
-                    className="post-detail-cover"
-                    src={imageUrl(active.cover).width(1200).auto("format").url()}
-                    alt={active.cover.alt || ""}
-                  />
-                )}
-                {active.body.length > 0 && (
-                  <div className="mt-4">
-                    <PortableText
-                      value={active.body}
-                      components={{
-                        types: {
-                          image: ({ value }) =>
-                            value.asset && (
-                              <figure className="post-figure">
-                                <img
-                                  src={imageUrl(value).width(1200).auto("format").url()}
-                                  alt={value.alt || ""}
-                                  loading="lazy"
-                                />
-                                {value.caption && <figcaption>{value.caption}</figcaption>}
-                              </figure>
-                            ),
-                        },
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-            </>
-=======
+
   {active && (
     <>
       <button
@@ -234,7 +172,6 @@ export default function News({ posts, loaded, preview = false }) {
                 components={portableTextComponents}
               />
             </div>
->>>>>>> e95caf3791032bc8607add31e751499ec8eafd52
           )}
         </div>
       </div>

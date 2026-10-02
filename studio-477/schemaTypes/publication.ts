@@ -61,27 +61,43 @@ export const publication = defineType({
       ],
     }),
     defineField({
-      name: 'body',
-      title: 'Texto',
-      type: 'array',
-      of: [
-        {type: 'block'},
-        {
-          type: 'image',
-          options: {hotspot: true},
-          fields: [
-            defineField({
-              name: 'alt',
-              title: 'Descripción de la imagen',
-              type: 'string',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({name: 'caption', title: 'Pie de foto', type: 'string'}),
-          ],
-        },
+  name: 'body',
+  title: 'Texto',
+  type: 'array',
+  of: [
+    {
+      type: 'block',
+      styles: [
+        {title: 'Normal', value: 'normal'},
+        {title: 'Título', value: 'h2'},
+        {title: 'Subtítulo', value: 'h3'},
+        {title: 'Cita', value: 'blockquote'},
       ],
-      validation: (rule) => rule.required().min(1),
-    }),
+      marks: {
+        decorators: [
+          {title: 'Negrita', value: 'strong'},
+          {title: 'Cursiva', value: 'em'},
+          {title: 'Subrayado', value: 'underline'},
+          {title: 'Resaltado', value: 'highlight'},
+        ],
+      },
+    },
+    {
+      type: 'image',
+      options: {hotspot: true},
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Descripción de la imagen',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+        defineField({name: 'caption', title: 'Pie de foto', type: 'string'}),
+      ],
+    },
+  ],
+  validation: (rule) => rule.required().min(1),
+}),
   ],
   orderings: [
     {

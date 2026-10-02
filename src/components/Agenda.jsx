@@ -21,7 +21,7 @@ function EventList({ events }) {
 
       <div>
         <h3>{event.title}</h3>
-        <p><span style="font-size: 24px;">&#128204;</span>{event.location}<span style="font-size: 24px;">&#128204;</span></p>
+        <p> 📌 {event.location}</p>
         <p>{event.summary}</p>
       </div>
     </li>

@@ -64,36 +64,42 @@ export default function App() {
       cover: item.cover?.url ? item.cover : null,
       date: item.date,
     }));
+
   const events = content
-  .filter((item) => item._type === "event" && item.datetime)
-  .sort(
-    (first, second) =>
-      new Date(first.datetime) - new Date(second.datetime)
-  )
-  .map((item) => {
-    const eventDate = new Date(item.datetime);
+    .filter((item) => item._type === "event" && item.datetime)
+    .sort(
+      (first, second) => new Date(first.datetime) - new Date(second.datetime),
+    )
+    .map((item) => {
+      const eventDate = new Date(item.datetime);
 
-    return {
-      id: item._id,
-      month: eventDate
-        .toLocaleDateString("es-ES", {
-          month: "short",
+      return {
+        id: item._id,
+        month: eventDate
+          .toLocaleDateString("es-ES", {
+            month: "short",
+            timeZone: "Europe/Madrid",
+          })
+          .toUpperCase()
+          .replace(".", ""),
+        day: eventDate.toLocaleDateString("es-ES", {
+          day: "2-digit",
           timeZone: "Europe/Madrid",
-        })
-        .toUpperCase()
-        .replace(".", ""),
-      day: eventDate.toLocaleDateString("es-ES", {
-        day: "2-digit",
-        timeZone: "Europe/Madrid",
-      }),
-      datetime: item.datetime,
-      title: item.title,
-      location: item.location,
-      summary: item.summary,
-    };
-  });
+        }),
+        datetime: item.datetime,
+        title: item.title,
+        location: item.location,
+        summary: item.summary,
+      };
+    });
 
-const ready = loaded && !contentError;
+  const ready = loaded && !contentError;
+
+  const now = new Date();
+
+  const upcomingEvents = events.filter(
+    (event) => new Date(event.datetime) >= now,
+  );
 
   return (
     <>
@@ -156,7 +162,7 @@ const ready = loaded && !contentError;
                 <section className="home-updates">
                   <div className="wrap">
                     <News posts={posts} loaded={ready} preview />
-                    <Agenda events={events} loaded={ready} preview />
+                    <Agenda events={upcomingEvents} loaded={ready} preview />
                   </div>
                 </section>
               </>

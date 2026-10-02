@@ -9,8 +9,9 @@ function EventList({ events }) {
         {event.day}
       </div>
       <div>
-        <h3>{event.title}</h3>
-        <p>{event.detail}</p>
+        <h3>{event.title}</h3> <small>{event.time}</small>
+        <p>{event.location}</p>
+        <p>{event.summary}</p>
       </div>
     </li>
   ));

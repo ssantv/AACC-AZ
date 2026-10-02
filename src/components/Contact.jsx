@@ -108,8 +108,8 @@ export default function Contact() {
             <label className="chk">
               <input type="checkbox" name="acepta" value="si" required />
               <span>
-                He leído la <Link to="/privacidad">política de privacidad</Link> y
-                consiento que ACI Zamora use estos datos para contestarme.
+                He leído la <Link to="/privacidad">política de privacidad</Link>{" "}
+                y consiento que ACI Zamora use estos datos para contestarme.
               </span>
             </label>
             <button className="btn" type="submit" disabled={state.submitting}>

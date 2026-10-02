@@ -65,26 +65,10 @@ export const publication = defineType({
       title: 'Texto',
       type: 'array',
       of: [
-        {
-          type: 'block',
-          styles: [
-            { title: 'Normal', value: 'normal' },
-            { title: 'Título', value: 'h2' },
-            { title: 'Subtítulo', value: 'h3' },
-            { title: 'Cita', value: 'blockquote' },
-          ],
-          marks: {
-            decorators: [
-              { title: 'Negrita', value: 'strong' },
-              { title: 'Cursiva', value: 'em' },
-              { title: 'Subrayado', value: 'underline' },
-              { title: 'Resaltado', value: 'highlight' },
-            ],
-          },
-        },
+        {type: 'block'},
         {
           type: 'image',
-          options: { hotspot: true },
+          options: {hotspot: true},
           fields: [
             defineField({
               name: 'alt',
@@ -92,7 +76,7 @@ export const publication = defineType({
               type: 'string',
               validation: (rule) => rule.required(),
             }),
-            defineField({ name: 'caption', title: 'Pie de foto', type: 'string' }),
+            defineField({name: 'caption', title: 'Pie de foto', type: 'string'}),
           ],
         },
       ],

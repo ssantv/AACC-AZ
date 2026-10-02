@@ -62,6 +62,7 @@ export default function App() {
       excerpt: item.summary,
       cover: item.cover,
       body: item.body || [],
+      cover: item.cover?.url ? item.cover : null,
       date: item.date,
     }));
   const events = content
@@ -186,22 +187,42 @@ export default function App() {
             <strong>ACI Zamora</strong>
             <span>Asociación de Altas Capacidades Intelectuales de Zamora</span>
             <span>Todos los derechos reservados</span>
-
           </div>
           <div className="footer-actions">
             <div className="footer-links">
-              <a href="https://www.instagram.com/acizamora/" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://www.facebook.com/profile.php?id=100088137712325" target="_blank" rel="noopener noreferrer">Facebook</a>
-              <a href="mailto:acizamora22@gmail.com" target="_blank" rel="noopener noreferrer">Correo</a>
+              <a
+                href="https://www.instagram.com/acizamora/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=100088137712325"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Facebook
+              </a>
+              <a
+                href="mailto:acizamora22@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Correo
+              </a>
               <Friends />
             </div>
+<<<<<<< HEAD
             <div className="footer-bottom mx-auto">
+=======
+            <div className="footer-bottom justify-content-between">
+>>>>>>> e95caf3791032bc8607add31e751499ec8eafd52
               <Link to="/privacidad">Política de privacidad</Link> ·{" "}
               <Link to="/cookies">Política de cookies</Link>
             </div>
           </div>
         </div>
-
       </footer>
     </>
   );

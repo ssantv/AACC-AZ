@@ -11,23 +11,61 @@ function formatDate(date) {
   });
 }
 
+const portableTextComponents = {
+  types: {
+    image: ({ value }) =>
+      value?.url ? (
+        <figure className="post-image">
+          <img
+            src={`${value.url}?w=1200&auto=format`}
+            alt={value.alt || ""}
+            loading="lazy"
+          />
+          {value.caption && <figcaption>{value.caption}</figcaption>}
+        </figure>
+      ) : null,
+  },
+};
+
 function PostDetails({ post }) {
   return (
     <>
+<<<<<<< HEAD
       {post.cover?.asset && (
         <img
           className="post-cover"
           src={imageUrl(post.cover).width(800).height(450).fit("crop").auto("format").url()}
+=======
+      {post.cover && (
+        <img
+          className="post-cover"
+          src={`${post.cover.url}?w=600&h=340&fit=crop&auto=format`}
+>>>>>>> e95caf3791032bc8607add31e751499ec8eafd52
           alt={post.cover.alt || ""}
           loading="lazy"
         />
       )}
+<<<<<<< HEAD
       <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
         {post.type === "articulo" ? "Artículo" : "Noticia"}
       </span>
       <h3>{post.title}</h3>
       <p>{post.excerpt}</p>
       <time dateTime={post.date}>{formatDate(post.date)}</time>
+=======
+
+      <div className="post-card-content">
+        <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
+          {post.type === "articulo" ? "Artículo" : "Noticia"}
+        </span>
+
+        <h3>{post.title}</h3>
+
+        <p>{post.excerpt}</p>
+
+        <time dateTime={post.date}>{formatDate(post.date)}</time>
+      </div>
+>>>>>>> e95caf3791032bc8607add31e751499ec8eafd52
     </>
   );
 }
@@ -108,6 +146,7 @@ export default function News({ posts, loaded, preview = false }) {
           </Link>
         )}
         <dialog ref={dialogRef} onClose={() => setActive(null)}>
+<<<<<<< HEAD
           {active && (
             <>
               <button
@@ -155,8 +194,53 @@ export default function News({ posts, loaded, preview = false }) {
                 )}
               </div>
             </>
+=======
+  {active && (
+    <>
+      <button
+        type="button"
+        className="dialog-close"
+        aria-label="Cerrar publicación"
+        onClick={() => dialogRef.current.close()}
+      >
+        &times;
+      </button>
+
+      <div className="dialog-content">
+        {active.cover && (
+          <figure className="dialog-cover">
+            <img
+              src={`${active.cover.url}?w=1200&auto=format`}
+              alt={active.cover.alt || ""}
+            />
+          </figure>
+        )}
+
+        <div className="dialog-inner">
+          <span className="tag">
+            {active.type === "articulo" ? "Artículo" : "Noticia"}
+          </span>
+
+          <h3>{active.title}</h3>
+
+          <p className="note">
+            {formatDate(active.date)}
+          </p>
+
+          {active.body?.length > 0 && (
+            <div className="dialog-body">
+              <PortableText
+                value={active.body}
+                components={portableTextComponents}
+              />
+            </div>
+>>>>>>> e95caf3791032bc8607add31e751499ec8eafd52
           )}
-        </dialog>
+        </div>
+      </div>
+    </>
+  )}
+</dialog>
       </div>
     </Container>
   );

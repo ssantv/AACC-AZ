@@ -13,7 +13,6 @@
   --sun: #ffd23f;
   --on-violet: #fff;
 }
-
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 76px;
@@ -355,8 +354,50 @@ nav a.active {
 
 .band {
   background: var(--violet);
+  color: var(--on-violet);
 }
-
+.band .card {
+  color: var(--ink);
+}
+.goals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.card {
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: 8px;
+  padding: 26px;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.band .card {
+  box-shadow: 6px 6px 0 #16132b;
+  border-color: #16132b;
+  background: #fff;
+}
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+.card p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+.friends {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+.friends a {
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 3px;
+  width: 100%;
+}
+.friends a:hover {
+  color: var(--violet);
+}
 .contact {
   background: #ffaaaa;
 }
@@ -388,14 +429,35 @@ nav a.active {
 
 .grid2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  margin-right: auto;
+  line-height: 1.35;
 }
-
-.grid4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+.footer-identity strong {
+  font: 400 1.1rem "Bowlby One", sans-serif;
+}
+.footer-identity span {
+  font-size: 0.82rem;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-weight: 800;
+}
+.footer-links a,
+.footer-institutions-trigger {
+  text-underline-offset: 4px;
+}
+.footer-institutions-trigger {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .card {
@@ -410,10 +472,36 @@ nav a.active {
   font-size: 1.3rem;
   margin-bottom: 12px;
 }
+.friends-dialog .friends a:hover {
+  color: #5640c7;
+}
 
-.card p {
-  margin: 0;
-  font-size: 1.05rem;
+.footer-bottom {
+  border-top: 3px solid var(--ink);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.site-footer .footer-bottom {
+  color: var(--ink);
+  font-size: 0.8rem;
+}
+.footer-bottom a {
+  color: var(--ink);
+  text-underline-offset: 3px;
+}
+.footer-bottom a:hover {
+  color: var(--violet);
+}
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 
 .tag {
@@ -474,17 +562,12 @@ nav a.active {
 .chips button[aria-pressed="true"] {
   outline: 3px solid var(--sun);
 }
-
-.card.post {
-  display: block;
-  width: 100%;
-  padding: 0;
-  overflow: hidden;
+.post {
   cursor: pointer;
   text-align: left;
-}
-
-.post-cover {
+  font: inherit;
+  color: inherit;
+  width: 100%;
   display: block;
   width: 100%;
   height: 220px;
@@ -697,11 +780,10 @@ nav a.active {
    ========================================================================== */
 
 dialog {
-  width: 80%;
-  max-width: 960px;
+  max-width: 640px;
+  width: calc(100% - 32px);
   max-height: calc(100dvh - 32px);
   margin: auto;
-  overflow: hidden;
   border: 3px solid var(--ink);
   border-radius: 8px;
   background: var(--card);
@@ -717,6 +799,8 @@ dialog[open] {
 
 dialog::backdrop {
   background: rgba(22, 19, 43, 0.6);
+  position: fixed;
+  inset: 0;
 }
 
 dialog .btn {
@@ -724,19 +808,20 @@ dialog .btn {
 }
 
 .dialog-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
+  align-self: flex-end;
+  flex: none;
   display: grid;
   place-items: center;
   width: 40px;
   height: 40px;
+  margin: -16px -16px 8px 8px;
   border: 3px solid var(--ink);
   border-radius: 50%;
   background: rgb(255 255 255 / 85%);
   color: var(--ink);
-  font: 800 1.5rem/1 Nunito, sans-serif;
+  font:
+    800 1.5rem/1 Nunito,
+    sans-serif;
   cursor: pointer;
 }
 
@@ -1127,28 +1212,5 @@ footer.site-footer {
 
   .friends-dialog .friends {
     grid-template-columns: 1fr;
-  }
-
-  dialog {
-    width: 92%;
-    max-height: calc(100dvh - 48px);
-    border-radius: 12px;
-  }
-
-  .dialog-inner {
-    padding: 20px 15px;
-  }
-
-  .dialog-body {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .post-image {
-    margin: 1rem 0;
-  }
-
-  .post-image img {
-    max-height: 50vh;
   }
 }

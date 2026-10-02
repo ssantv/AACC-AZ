@@ -20,7 +20,6 @@ import {
   Friends,
 } from "./components/InfoSections.jsx";
 
-
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
@@ -66,25 +65,35 @@ export default function App() {
       date: item.date,
     }));
   const events = content
-    .filter((item) => item._type === "event")
-    .sort((first, second) => first.date.localeCompare(second.date))
-    .map((item) => ({
+  .filter((item) => item._type === "event" && item.datetime)
+  .sort(
+    (first, second) =>
+      new Date(first.datetime) - new Date(second.datetime)
+  )
+  .map((item) => {
+    const eventDate = new Date(item.datetime);
+
+    return {
       id: item._id,
-      month: new Date(`${item.date}T12:00:00`)
-        .toLocaleDateString("es-ES", { month: "short" })
+      month: eventDate
+        .toLocaleDateString("es-ES", {
+          month: "short",
+          timeZone: "Europe/Madrid",
+        })
         .toUpperCase()
         .replace(".", ""),
-      day: item.date.slice(-2),
-      date: item.date,
+      day: eventDate.toLocaleDateString("es-ES", {
+        day: "2-digit",
+        timeZone: "Europe/Madrid",
+      }),
+      datetime: item.datetime,
       title: item.title,
       location: item.location,
       summary: item.summary,
-      datetime: item.datetime,
-    }));
-  const ready = loaded && !contentError;
-  const upcomingEvents = events.filter(
-    (event) => event.date >= new Date().toLocaleDateString("sv-SE"),
-  );
+    };
+  });
+
+const ready = loaded && !contentError;
 
   return (
     <>
@@ -147,7 +156,7 @@ export default function App() {
                 <section className="home-updates">
                   <div className="wrap">
                     <News posts={posts} loaded={ready} preview />
-                    <Agenda events={upcomingEvents} loaded={ready} preview />
+                    <Agenda events={events} loaded={ready} preview />
                   </div>
                 </section>
               </>

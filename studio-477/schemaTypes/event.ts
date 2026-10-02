@@ -14,17 +14,12 @@ export const event = defineType({
       validation: (rule) => rule.required().max(160),
     }),
     defineField({
-      name: 'date',
-      title: 'Fecha',
-      type: 'date',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: 'datetime',
       title: 'Hora',
       type: 'datetime',
       options: {
         timeFormat: 'HH:mm',
+        displayTimeZone: 'Europe/Madrid',
       },
     }),
 

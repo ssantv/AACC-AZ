@@ -7,10 +7,21 @@ function EventList({ events }) {
       <div className="date">
         <small>{event.month}</small>
         {event.day}
-        {event.datetime && <small>{new Date(event.datetime).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}</small>}
+
+        {event.datetime && (
+          <small>
+            {new Date(event.datetime).toLocaleTimeString("es-ES", {
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: "Europe/Madrid",
+            })}
+          </small>
+        )}
       </div>
+
       <div>
-        <h3>{event.title}</h3><p> · {event.location} ·</p>
+        <h3>{event.title}</h3>
+        <p> · {event.location} ·</p>
         <p>{event.summary}</p>
       </div>
     </li>
@@ -19,14 +30,25 @@ function EventList({ events }) {
 
 export default function Agenda({ events, loaded, preview = false }) {
   const [showPast, setShowPast] = useState(false);
-  const today = new Date().toLocaleDateString("sv-SE");
+
+  const now = new Date();
+
   const upcomingEvents = preview
     ? events.slice(0, 5)
-    : events.filter((event) => event.date >= today);
+    : events.filter(
+        (event) => event.datetime && new Date(event.datetime) >= now
+      );
+
   const pastEvents = preview
     ? []
-    : events.filter((event) => event.date < today).reverse();
+    : events
+        .filter(
+          (event) => event.datetime && new Date(event.datetime) < now
+        )
+        .reverse();
+
   const Container = preview ? "div" : "section";
+
   return (
     <Container
       id="agenda"
@@ -38,12 +60,15 @@ export default function Agenda({ events, loaded, preview = false }) {
         ) : (
           <h1 className="page-title">Agenda</h1>
         )}
+
         <ul className="events">
           {loaded && upcomingEvents.length === 0 && (
             <li>No hay próximos eventos.</li>
           )}
+
           <EventList events={upcomingEvents} />
         </ul>
+
         {!preview && pastEvents.length > 0 && (
           <>
             <button
@@ -55,6 +80,7 @@ export default function Agenda({ events, loaded, preview = false }) {
             >
               Eventos pasados
             </button>
+
             <div id="past-events" hidden={!showPast}>
               <ul className="events">
                 <EventList events={pastEvents} />
@@ -62,6 +88,7 @@ export default function Agenda({ events, loaded, preview = false }) {
             </div>
           </>
         )}
+
         {preview && (
           <Link className="btn preview-link" to="/agenda">
             Ver agenda completa

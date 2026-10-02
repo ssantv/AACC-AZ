@@ -20,22 +20,16 @@ export const event = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'time',
-      title: 'Hora',
-      type: 'time',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'location',
-      title: 'Lugar',
-      type: 'string',
-    }),
-    defineField({
       name: 'summary',
       title: 'Detalles',
       type: 'text',
       rows: 3,
       validation: (rule) => rule.required().max(500),
+    }),
+    defineField({
+      name: 'location',
+      title: 'Lugar',
+      type: 'string',
     }),
     defineField({
       name: 'registrationUrl',

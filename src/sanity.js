@@ -16,7 +16,6 @@ const contentQuery = `
       kind,
       title,
       date,
-      time,
       summary,
       "cover": cover{alt, "url": asset->url},
       body[]{

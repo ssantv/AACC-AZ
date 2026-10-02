@@ -20,6 +20,7 @@ import {
   Friends,
 } from "./components/InfoSections.jsx";
 
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
@@ -76,7 +77,8 @@ export default function App() {
       day: item.date.slice(-2),
       date: item.date,
       title: item.title,
-      detail: [item.location, item.summary].filter(Boolean).join(" · "),
+      location: item.location,
+      summary: item.summary,
     }));
   const ready = loaded && !contentError;
   const upcomingEvents = events.filter(

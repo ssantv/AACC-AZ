@@ -60,6 +60,7 @@ export default function App() {
       type: item.kind,
       title: item.title,
       excerpt: item.summary,
+      cover: item.cover,
       body: item.body || [],
       date: item.date,
     }));
@@ -194,7 +195,7 @@ export default function App() {
               <a href="mailto:acizamora22@gmail.com" target="_blank" rel="noopener noreferrer">Correo</a>
               <Friends />
             </div>
-            <div className="footer-bottom ">
+            <div className="footer-bottom mx-auto">
               <Link to="/privacidad">Política de privacidad</Link> ·{" "}
               <Link to="/cookies">Política de cookies</Link>
             </div>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { PortableText } from "@portabletext/react";
 import { Link } from "react-router-dom";
+import { imageUrl } from "../sanity.js";
 
 function formatDate(date) {
   return new Date(`${date}T12:00:00`).toLocaleDateString("es-ES", {
@@ -13,6 +14,14 @@ function formatDate(date) {
 function PostDetails({ post }) {
   return (
     <>
+      {post.cover?.asset && (
+        <img
+          className="post-cover"
+          src={imageUrl(post.cover).width(800).height(450).fit("crop").auto("format").url()}
+          alt={post.cover.alt || ""}
+          loading="lazy"
+        />
+      )}
       <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
         {post.type === "articulo" ? "Artículo" : "Noticia"}
       </span>
@@ -115,9 +124,33 @@ export default function News({ posts, loaded, preview = false }) {
                 </span>
                 <h3>{active.title}</h3>
                 <p className="note">{formatDate(active.date)}</p>
+                {active.cover?.asset && (
+                  <img
+                    className="post-detail-cover"
+                    src={imageUrl(active.cover).width(1200).auto("format").url()}
+                    alt={active.cover.alt || ""}
+                  />
+                )}
                 {active.body.length > 0 && (
                   <div className="mt-4">
-                    <PortableText value={active.body} />
+                    <PortableText
+                      value={active.body}
+                      components={{
+                        types: {
+                          image: ({ value }) =>
+                            value.asset && (
+                              <figure className="post-figure">
+                                <img
+                                  src={imageUrl(value).width(1200).auto("format").url()}
+                                  alt={value.alt || ""}
+                                  loading="lazy"
+                                />
+                                {value.caption && <figcaption>{value.caption}</figcaption>}
+                              </figure>
+                            ),
+                        },
+                      }}
+                    />
                   </div>
                 )}
               </div>

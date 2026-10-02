@@ -20,6 +20,7 @@ import {
   Friends,
 } from "./components/InfoSections.jsx";
 
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {

@@ -1,4 +1,4 @@
-import {CalendarIcon} from '@sanity/icons/Calendar'
+import {CalendarIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
 
 export const event = defineType({
@@ -17,13 +17,19 @@ export const event = defineType({
       name: 'date',
       title: 'Fecha',
       type: 'date',
+      options: {dateFormat: 'DD/MM/YYYY'},
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'time',
       title: 'Hora',
-      type: 'time',
-      validation: (rule) => rule.required(),
+      type: 'string',
+      description: 'Formato 24 horas, por ejemplo 18:30',
+      validation: (rule) =>
+        rule
+          .required()
+          .regex(/^([01]\d|2[0-3]):[0-5]\d$/, {name: 'hora', invert: false})
+          .error('Usa el formato HH:mm, por ejemplo 18:30'),
     }),
     defineField({
       name: 'location',
@@ -41,16 +47,25 @@ export const event = defineType({
       name: 'registrationUrl',
       title: 'Enlace para apuntarse',
       type: 'url',
+      description: 'Opcional. Por ejemplo, el enlace de un formulario de Google.',
+      validation: (rule) => rule.uri({scheme: ['http', 'https']}),
     }),
   ],
   orderings: [
     {
       title: 'Fecha, próximas primero',
       name: 'dateAsc',
-      by: [{field: 'date', direction: 'asc'}],
+      by: [
+        {field: 'date', direction: 'asc'},
+        {field: 'time', direction: 'asc'},
+      ],
     },
   ],
   preview: {
-    select: {title: 'title', subtitle: 'date'},
+    select: {title: 'title', date: 'date', time: 'time'},
+    prepare: ({title, date, time}) => ({
+      title,
+      subtitle: [date, time].filter(Boolean).join(' · '),
+    }),
   },
 })

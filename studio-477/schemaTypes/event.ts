@@ -1,5 +1,5 @@
-import {CalendarIcon} from '@sanity/icons/Calendar'
-import {defineField, defineType} from 'sanity'
+import { CalendarIcon } from '@sanity/icons/Calendar'
+import { defineField, defineType } from 'sanity'
 
 export const event = defineType({
   name: 'event',
@@ -19,6 +19,15 @@ export const event = defineType({
       type: 'date',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'datetime',
+      title: 'Hora',
+      type: 'datetime',
+      options: {
+        timeFormat: 'HH:mm',
+      },
+    }),
+
     defineField({
       name: 'summary',
       title: 'Detalles',
@@ -41,10 +50,10 @@ export const event = defineType({
     {
       title: 'Fecha, próximas primero',
       name: 'dateAsc',
-      by: [{field: 'date', direction: 'asc'}],
+      by: [{ field: 'date', direction: 'asc' }],
     },
   ],
   preview: {
-    select: {title: 'title', subtitle: 'date'},
+    select: { title: 'title', subtitle: 'date' },
   },
 })

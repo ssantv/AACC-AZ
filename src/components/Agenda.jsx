@@ -7,6 +7,7 @@ function EventList({ events }) {
       <div className="date">
         <small>{event.month}</small>
         {event.day}
+        {event.datetime && <small>{new Date(event.datetime).toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}</small>}
       </div>
       <div>
         <h3>{event.title}</h3><p> · {event.location} ·</p>

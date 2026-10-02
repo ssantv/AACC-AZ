@@ -1,5 +1,5 @@
-import { CalendarIcon } from '@sanity/icons/Calendar'
-import { defineField, defineType } from 'sanity'
+import {CalendarIcon} from '@sanity/icons/Calendar'
+import {defineField, defineType} from 'sanity'
 
 export const event = defineType({
   name: 'event',
@@ -43,12 +43,12 @@ export const event = defineType({
   ],
   orderings: [
     {
-      title: 'Fecha, próximas primero',
-      name: 'dateAsc',
-      by: [{ field: 'date', direction: 'asc' }],
+      title: 'Fecha y hora, próximas primero',
+      name: 'datetimeAsc',
+      by: [{field: 'datetime', direction: 'asc'}],
     },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'date' },
+    select: {title: 'title', subtitle: 'datetime'},
   },
 })

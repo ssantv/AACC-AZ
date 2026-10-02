@@ -15,14 +15,12 @@
 
 .post-image img {
   display: block;
-  width: 100%;
+  max-width: 100%;
   max-height: 60vh;
-  height: 60vh;
-  max-height: 60vh;
-  object-fit: contain;
+  width: auto;
+  height: auto;
   margin: 0 auto;
   border-radius: 12px;
-  opacity: 1;
 }
 
 .post-image figcaption {
@@ -49,6 +47,48 @@
 
 .dialog-inner {
   padding: 32px;
+}
+
+.dialog-body {
+  max-width: 42rem;
+  margin-inline: auto;
+  line-height: 1.7;
+}
+
+.dialog-body p {
+  margin: 0 0 1.1em;
+  text-indent: 1.5em;
+}
+
+.dialog-body h2,
+.dialog-body h3,
+.dialog-body h4 {
+  margin: 1.8em 0 0.6em;
+  line-height: 1.2;
+}
+.dialog-body h2 { font-size: 1.5rem; }
+.dialog-body h3 { font-size: 1.25rem; }
+.dialog-body h4 { font: 800 1.05rem Nunito, sans-serif; }
+
+.dialog-body ul,
+.dialog-body ol {
+  margin: 0 0 1.1em;
+  padding-left: 1.6em;
+}
+.dialog-body ul { list-style: disc; }
+.dialog-body ol { list-style: decimal; }
+.dialog-body li { margin-bottom: 0.4em; }
+
+.dialog-body blockquote {
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: 4px solid var(--violet);
+}
+
+.dialog-body a {
+  color: var(--violet);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 html {
@@ -715,6 +755,7 @@ dialog {
   position: fixed;
   width: 80%;
   max-height: calc(100dvh - 32px);
+  max-width: 960px;
   margin: auto;
   padding: 0;
   overflow: hidden;
@@ -760,7 +801,7 @@ dialog::backdrop {
   min-height: 0;
   overflow-y: auto;
 }
-dialog h3 {
+.dialog-inner > h3 {
   font-size: 1.7rem;
   margin-bottom: 16px;
 }
@@ -928,26 +969,16 @@ dialog .btn {
   .dialog-inner {
     padding: 20px 15px;
   }
-  
-  dialog p,
-  dialog li {
+
+  .dialog-body {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
   }
-  .dialog-image img {
-    width: 100%;
-    max-height: 45vh;
-    height: auto !important;
+  .post-image {
+    margin: 1rem 0;
   }
-  .dialog-body .post-image,
-  .dialog-body .dialog-image {
-    margin: 0.75rem 0;
-  }
-  .dialog-body p + .post-image,
-  .dialog-body p + .dialog-image,
-  .dialog-body .post-image + p,
-  .dialog-body .dialog-image + p {
-    margin-top: 0.5rem;
+  .post-image img {
+    max-height: 50vh;
   }
 }
 

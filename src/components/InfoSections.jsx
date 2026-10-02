@@ -429,7 +429,6 @@ export function Friends() {
   return (
     <div className="footer-institutions">
       <button
-        style={{ textDecoration: "none" }}
         type="button"
         className="footer-institutions-trigger"
         onClick={() => dialogRef.current?.showModal()}

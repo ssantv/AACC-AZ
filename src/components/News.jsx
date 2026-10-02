@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { PortableText } from "@portabletext/react";
 import { Link } from "react-router-dom";
-import { imageUrl } from "../sanity.js";
 
 function formatDate(date) {
   return new Date(`${date}T12:00:00`).toLocaleDateString("es-ES", {
@@ -30,7 +29,6 @@ const portableTextComponents = {
 function PostDetails({ post }) {
   return (
     <>
-
       {post.cover && (
         <img
           className="post-cover"
@@ -39,7 +37,6 @@ function PostDetails({ post }) {
           loading="lazy"
         />
       )}
-
 
       <div className="post-card-content">
         <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
@@ -132,7 +129,6 @@ export default function News({ posts, loaded, preview = false }) {
           </Link>
         )}
         <dialog ref={dialogRef} onClose={() => setActive(null)}>
-
   {active && (
     <>
       <button

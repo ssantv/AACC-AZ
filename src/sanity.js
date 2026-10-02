@@ -1,5 +1,4 @@
 import { createClient } from "@sanity/client";
-import { createImageUrlBuilder } from "@sanity/image-url";
 
 const client = createClient({
   projectId: "322gfyp6",
@@ -8,12 +7,6 @@ const client = createClient({
   perspective: "published",
   useCdn: false,
 });
-
-const imageBuilder = createImageUrlBuilder(client);
-
-export function imageUrl(image) {
-  return imageBuilder.image(image);
-}
 
 const contentQuery = `
   *[_type in ["publication", "event"]]
@@ -24,14 +17,11 @@ const contentQuery = `
       title,
       date,
       summary,
-      cover,
-      body,
       "cover": cover{alt, "url": asset->url},
       body[]{
         ...,
         _type == "image" => {alt, caption, "url": asset->url}
       },
-
       location,
       registrationUrl
     }

@@ -1,5 +1,5 @@
-import { DocumentTextIcon } from '@sanity/icons/DocumentText'
-import { defineField, defineType } from 'sanity'
+import {DocumentTextIcon} from '@sanity/icons/DocumentText'
+import {defineField, defineType} from 'sanity'
 
 export const publication = defineType({
   name: 'publication',
@@ -13,8 +13,8 @@ export const publication = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Noticia', value: 'noticia' },
-          { title: 'Artículo', value: 'articulo' },
+          {title: 'Noticia', value: 'noticia'},
+          {title: 'Artículo', value: 'articulo'},
         ],
         layout: 'radio',
       },
@@ -30,7 +30,7 @@ export const publication = defineType({
       name: 'slug',
       title: 'URL',
       type: 'slug',
-      options: { source: 'title', maxLength: 96 },
+      options: {source: 'title', maxLength: 96},
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -50,7 +50,7 @@ export const publication = defineType({
       name: 'cover',
       title: 'Imagen de portada (opcional)',
       type: 'image',
-      options: { hotspot: true },
+      options: {hotspot: true},
       fields: [
         defineField({
           name: 'alt',
@@ -87,13 +87,13 @@ export const publication = defineType({
     {
       title: 'Fecha, más recientes primero',
       name: 'dateDesc',
-      by: [{ field: 'date', direction: 'desc' }],
+      by: [{field: 'date', direction: 'desc'}],
     },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'kind' },
-    prepare({ title, subtitle }) {
-      return { title, subtitle: subtitle === 'articulo' ? 'Artículo' : 'Noticia' }
+    select: {title: 'title', subtitle: 'kind'},
+    prepare({title, subtitle}) {
+      return {title, subtitle: subtitle === 'articulo' ? 'Artículo' : 'Noticia'}
     },
   },
 })

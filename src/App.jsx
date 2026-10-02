@@ -60,7 +60,6 @@ export default function App() {
       type: item.kind,
       title: item.title,
       excerpt: item.summary,
-      cover: item.cover,
       body: item.body || [],
       cover: item.cover?.url ? item.cover : null,
       date: item.date,

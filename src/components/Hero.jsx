@@ -42,12 +42,17 @@ export default function Hero() {
             intelectuales. Nos juntamos para que ellos se sientan parte de un
             grupo y nosotros, acompañados.
           </p>
-          <Link className="btn" to="/contacto">
-            Escríbenos
-          </Link>
-          <Link className="btn alt" to="/quienes">
-            Conócenos
-          </Link>
+          <div className="hero-actions">
+            <Link className="btn pink" to="/testimonios">
+              Testimonios
+            </Link>
+            <Link className="btn" to="/contacto">
+              Escríbenos
+            </Link>
+            <Link className="btn alt" to="/quienes">
+              Conócenos
+            </Link>
+          </div>
         </div>
         <div className="art" aria-hidden="true">
           <img className="logo" src="/logo.png" alt="" />

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" xmlns:c2pa="http://c2pa.org/manifest">
+  <rect width="1600" height="900" fill="#FFF3D6"/>
+  <circle cx="800" cy="430" r="340" fill="#FBD982"/>
+  <circle cx="800" cy="430" r="250" fill="#F8C65A" opacity="0.55"/>
+  <rect y="745" width="1600" height="155" fill="#E8D0A2"/>
+  <rect y="745" width="1600" height="10" fill="#D9BC88"/>
+
+  <!-- taza izquierda (verde) -->
+  <ellipse cx="560" cy="735" rx="200" ry="24" fill="#C9B07E"/>
+  <path d="M672 555 C745 540 750 650 650 660" fill="none" stroke="#1F6B4A" stroke-width="24" stroke-linecap="round"/>
+  <path d="M440 520 H680 C680 640 640 725 560 725 C480 725 440 640 440 520 Z" fill="#1F6B4A"/>
+  <ellipse cx="560" cy="520" rx="120" ry="20" fill="#4A2C1D"/>
+  <path d="M470 580 C475 640 500 690 540 705" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- taza derecha (roja) -->
+  <ellipse cx="1040" cy="735" rx="200" ry="24" fill="#C9B07E"/>
+  <path d="M928 555 C855 540 850 650 950 660" fill="none" stroke="#C8453B" stroke-width="24" stroke-linecap="round"/>
+  <path d="M920 520 H1160 C1160 640 1120 725 1040 725 C960 725 920 640 920 520 Z" fill="#C8453B"/>
+  <ellipse cx="1040" cy="520" rx="120" ry="20" fill="#4A2C1D"/>
+  <path d="M950 580 C955 640 980 690 1020 705" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- vapor -->
+  <g fill="none" stroke="#3A2E2A" stroke-width="10" stroke-linecap="round" opacity="0.55">
+    <path d="M520 485 C490 450 550 425 520 385"/>
+    <path d="M600 485 C570 450 630 425 600 385"/>
+    <path d="M1000 485 C970 450 1030 425 1000 385"/>
+    <path d="M1080 485 C1050 450 1110 425 1080 385"/>
+  </g>
+
+  <!-- bocadillo izquierdo con bombilla -->
+  <path d="M520 300 L560 360 L600 300 Z" fill="#FFFFFF"/>
+  <circle cx="560" cy="215" r="105" fill="#FFFFFF"/>
+  <circle cx="560" cy="205" r="36" fill="#F6B73C"/>
+  <rect x="544" y="238" width="32" height="26" rx="6" fill="#3A2E2A"/>
+  <g stroke="#3A2E2A" stroke-width="7" stroke-linecap="round">
+    <path d="M560 140 V155"/><path d="M500 165 L511 176"/><path d="M620 165 L609 176"/>
+  </g>
+
+  <!-- bocadillo derecho con chispa -->
+  <path d="M1000 300 L1040 360 L1080 300 Z" fill="#FFFFFF"/>
+  <circle cx="1040" cy="215" r="105" fill="#FFFFFF"/>
+  <path d="M1040 150 C1046 195 1056 205 1100 215 C1056 225 1046 235 1040 280 C1034 235 1024 225 980 215 C1024 205 1034 195 1040 150 Z" fill="#1F6B4A"/>
+  <circle cx="1090" cy="160" r="9" fill="#C8453B"/>
+  <circle cx="990" cy="270" r="7" fill="#F6B73C"/>
+</svg>

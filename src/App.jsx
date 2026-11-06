@@ -11,6 +11,7 @@ import Hero from "./components/Hero.jsx";
 import News from "./components/News.jsx";
 import Agenda from "./components/Agenda.jsx";
 import Contact from "./components/Contact.jsx";
+import Testimonials from "./components/Testimonials.jsx";
 import { CookiePolicy, PrivacyPolicy } from "./components/Legal.jsx";
 import { fetchPublishedContent } from "./sanity.js";
 import {
@@ -58,10 +59,33 @@ export default function App() {
     .map((item) => ({
       id: item._id,
       type: item.kind,
-      title: item.title,
+      title:
+        item.series === "cafe" && item.interviewee
+          ? `Tomando un café con ${item.interviewee}`
+          : item.title || (item.series === "cafe" ? "Tomando un café con..." : item.title),
       excerpt: item.summary,
       body: item.body || [],
-      cover: item.cover?.url ? item.cover : null,
+      cover:
+        item.cover?.url
+          ? item.cover
+          : item.series === "cafe"
+            ? { url: "/cafe-con.svg", alt: "Tomando un café con..." }
+            : null,
+      date: item.date,
+      interviewee: item.interviewee,
+      interviewer: item.interviewer,
+      series: item.series,
+    }));
+
+  const testimonials = content
+    .filter((item) => item._type === "testimonial")
+    .sort((first, second) => new Date(second.date) - new Date(first.date))
+    .map((item) => ({
+      id: item._id,
+      relationship: item.relationship,
+      relationshipDetail: item.relationshipDetail,
+      quote: item.quote,
+      story: item.story || [],
       date: item.date,
     }));
 
@@ -140,6 +164,7 @@ export default function App() {
             </NavLink>
             <NavLink to="/quienes">Quiénes somos</NavLink>
             <NavLink to="/aacc">Las AACC</NavLink>
+            <NavLink to="/testimonios">Testimonios</NavLink>
             <NavLink to="/noticias">Noticias</NavLink>
             <NavLink to="/agenda">Agenda</NavLink>
             <NavLink to="/contacto">Contacto</NavLink>
@@ -178,6 +203,10 @@ export default function App() {
             }
           />
           <Route path="/aacc" element={<Signs />} />
+          <Route
+            path="/testimonios"
+            element={<Testimonials testimonials={testimonials} loaded={ready} />}
+          />
           <Route path="/senales" element={<Navigate to="/aacc" replace />} />
           <Route path="/hacemos" element={<Navigate to="/quienes" replace />} />
           <Route

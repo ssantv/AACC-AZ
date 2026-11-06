@@ -23,6 +23,16 @@ const portableTextComponents = {
           {value.caption && <figcaption>{value.caption}</figcaption>}
         </figure>
       ) : null,
+    interviewQA: ({ value }) => (
+      <div className="interview-qa">
+        <p className="interview-question">
+          <strong>P.</strong> {value.question}
+        </p>
+        <p className="interview-answer">
+          <strong>R.</strong> {value.answer}
+        </p>
+      </div>
+    ),
   },
 };
 
@@ -30,18 +40,40 @@ function PostDetails({ post }) {
   return (
     <>
       {post.cover && (
-        <img
+        <div
           className="post-cover"
-          src={`${post.cover.url}?w=600&h=340&fit=crop&auto=format`}
-          alt={post.cover.alt || ""}
-          loading="lazy"
+          role="img"
+          aria-label={post.cover.alt || ""}
+          style={{
+            backgroundImage: `url(${
+              post.cover.url.includes("cdn.sanity.io")
+                ? `${post.cover.url}?w=600&h=340&fit=crop&auto=format`
+                : post.cover.url
+            })`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
         />
       )}
 
       <div className="post-card-content">
-        <span className={`tag ${post.type === "articulo" ? "art-tag" : ""}`}>
-          {post.type === "articulo" ? "Artículo" : "Noticia"}
+        <span
+          className={`tag ${
+            post.type === "articulo"
+              ? "art-tag"
+              : post.type === "entrevista"
+                ? "interview-tag"
+                : ""
+          }`}
+        >
+          {post.type === "articulo"
+            ? "Artículo"
+            : post.type === "entrevista"
+              ? "Entrevista"
+              : "Noticia"}
         </span>
+
 
         <h3>{post.title}</h3>
 
@@ -90,6 +122,7 @@ export default function News({ posts, loaded, preview = false }) {
               ["all", "Todo"],
               ["noticia", "Noticias"],
               ["articulo", "Artículos"],
+              ["entrevista", "Entrevistas"],
             ].map(([value, label]) => (
               <button
                 type="button"
@@ -144,16 +177,33 @@ export default function News({ posts, loaded, preview = false }) {
         {active.cover && (
           <figure className="dialog-cover">
             <img
-              src={`${active.cover.url}?w=1200&auto=format`}
+              src={
+                active.cover.url.includes("cdn.sanity.io")
+                  ? `${active.cover.url}?w=1200&auto=format`
+                  : active.cover.url
+              }
               alt={active.cover.alt || ""}
             />
           </figure>
         )}
 
         <div className="dialog-inner">
-          <span className="tag">
-            {active.type === "articulo" ? "Artículo" : "Noticia"}
+          <span
+            className={`tag ${
+              active.type === "articulo"
+                ? "art-tag"
+                : active.type === "entrevista"
+                  ? "interview-tag"
+                  : ""
+            }`}
+          >
+            {active.type === "articulo"
+              ? "Artículo"
+              : active.type === "entrevista"
+                ? "Entrevista"
+                : "Noticia"}
           </span>
+
 
           <h3>{active.title}</h3>
 

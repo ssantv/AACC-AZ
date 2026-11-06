@@ -9,7 +9,7 @@ const client = createClient({
 });
 
 const contentQuery = `
-  *[_type in ["publication", "event"]]
+  *[_type in ["publication", "event", "testimonial"]]
     | order(date desc)[0...100] {
       _id,
       _type,
@@ -24,7 +24,17 @@ const contentQuery = `
         _type == "image" => {alt, caption, "url": asset->url}
       },
       location,
-      registrationUrl
+      registrationUrl,
+      interviewee,
+      interviewer,
+      series,
+      relationship,
+      relationshipDetail,
+      quote,
+      "story": story[]{
+        ...,
+        _type == "image" => {alt, caption, "url": asset->url}
+      }
     }
 `;
 

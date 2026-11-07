@@ -6,6 +6,7 @@ const client = createClient({
   apiVersion: "2026-09-29",
   perspective: "published",
   useCdn: false,
+  fetch: (url, options) => fetch(url, { ...options, cache: "no-store" }),
 });
 
 const contentQuery = `

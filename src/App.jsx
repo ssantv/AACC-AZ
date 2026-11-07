@@ -69,7 +69,7 @@ export default function App() {
         item.cover?.url
           ? item.cover
           : item.series === "cafe"
-            ? { url: "/cafe-con.svg", alt: "Tomando un café con..." }
+            ? { url: "/cafe_con.png", alt: "Tomando un café con..." }
             : null,
       date: item.date,
       interviewee: item.interviewee,

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { PortableText } from "@portabletext/react";
+import { useNavigate, useParams } from "react-router-dom";
 
 function formatDate(date) {
   return new Date(`${date}T12:00:00`).toLocaleDateString("es-ES", {
@@ -41,12 +42,30 @@ function relationshipLabel(testimonial) {
 }
 
 export default function Testimonials({ testimonials, loaded }) {
+  const params = useParams();
+  const navigate = useNavigate();
   const [active, setActive] = useState(null);
   const dialogRef = useRef(null);
 
   useEffect(() => {
     if (active) dialogRef.current?.showModal();
   }, [active]);
+
+  useEffect(() => {
+    if (!loaded) return;
+    const slug = params.slug;
+    if (slug) {
+      const testimonial = testimonials.find((item) => item.slug === slug);
+      if (testimonial) {
+        setActive(testimonial);
+      } else {
+        navigate("/testimonios", { replace: true });
+      }
+    } else {
+      setActive(null);
+      dialogRef.current?.close();
+    }
+  }, [params.slug, loaded, testimonials, navigate]);
 
   return (
     <section id="testimonios" className="band testimonials-section">
@@ -67,7 +86,10 @@ export default function Testimonials({ testimonials, loaded }) {
               type="button"
               className="card testimonial-card"
               key={testimonial.id}
-              onClick={() => setActive(testimonial)}
+              onClick={() => {
+                if (!testimonial.slug) setActive(testimonial);
+                else navigate(`/testimonios/${testimonial.slug}`);
+              }}
             >
               <div className="testimonial-quote-block">
                 <span className="testimonial-mark" aria-hidden="true">
@@ -89,7 +111,10 @@ export default function Testimonials({ testimonials, loaded }) {
           ))}
         </div>
 
-        <dialog ref={dialogRef} onClose={() => setActive(null)}>
+        <dialog
+          ref={dialogRef}
+          onClose={() => navigate("/testimonios")}
+        >
           {active && (
             <>
               <button

@@ -88,6 +88,7 @@ export default function App() {
       quote: item.quote,
       story: item.story || [],
       date: item.date,
+      slug: item.slug,
     }));
 
   const events = content
@@ -206,6 +207,10 @@ export default function App() {
           <Route path="/aacc" element={<Signs />} />
           <Route
             path="/testimonios"
+            element={<Testimonials testimonials={testimonials} loaded={ready} />}
+          />
+          <Route
+            path="/testimonios/:slug"
             element={<Testimonials testimonials={testimonials} loaded={ready} />}
           />
           <Route path="/senales" element={<Navigate to="/aacc" replace />} />

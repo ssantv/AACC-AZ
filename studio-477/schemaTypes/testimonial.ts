@@ -45,6 +45,13 @@ export const testimonial = defineType({
       validation: (rule) => rule.required().max(280),
     }),
     defineField({
+      name: 'slug',
+      title: 'URL',
+      type: 'slug',
+      options: {source: 'quote', maxLength: 96},
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'story',
       title: 'Historia',
       type: 'array',

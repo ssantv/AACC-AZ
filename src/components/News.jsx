@@ -169,8 +169,8 @@ export default function News({ posts, loaded, preview = false }) {
               className="card post"
               key={post.id}
               onClick={() => {
-                if (preview || !post.slug) setActive(post);
-                else navigate(`/noticias/${post.slug}`);
+                if (post.slug) navigate(`/noticias/${post.slug}`);
+                else setActive(post);
               }}
             >
               <PostDetails post={post} />

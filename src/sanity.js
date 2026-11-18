@@ -16,6 +16,7 @@ const contentQuery = `
       _type,
       kind,
       title,
+      "slug": slug.current,
       date,
       datetime,
       summary,

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { PortableText } from "@portabletext/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 function formatDate(date) {
   return new Date(`${date}T12:00:00`).toLocaleDateString("es-ES", {
@@ -86,6 +86,8 @@ function PostDetails({ post }) {
 }
 
 export default function News({ posts, loaded, preview = false }) {
+  const params = useParams();
+  const navigate = useNavigate();
   const [filter, setFilter] = useState("all");
   const [active, setActive] = useState(null);
   const dialogRef = useRef(null);
@@ -93,6 +95,22 @@ export default function News({ posts, loaded, preview = false }) {
   useEffect(() => {
     if (active) dialogRef.current?.showModal();
   }, [active]);
+
+  useEffect(() => {
+    if (preview || !loaded) return;
+    const slug = params.slug;
+    if (slug) {
+      const post = posts.find((item) => item.slug === slug);
+      if (post) {
+        setActive(post);
+      } else {
+        navigate("/noticias", { replace: true });
+      }
+    } else {
+      setActive(null);
+      dialogRef.current?.close();
+    }
+  }, [params.slug, loaded, posts, navigate, preview]);
 
   const visiblePosts = preview
     ? posts.slice(0, 3)
@@ -150,7 +168,10 @@ export default function News({ posts, loaded, preview = false }) {
               type="button"
               className="card post"
               key={post.id}
-              onClick={() => setActive(post)}
+              onClick={() => {
+                if (preview || !post.slug) setActive(post);
+                else navigate(`/noticias/${post.slug}`);
+              }}
             >
               <PostDetails post={post} />
             </button>
@@ -161,7 +182,13 @@ export default function News({ posts, loaded, preview = false }) {
             Ver todas las publicaciones
           </Link>
         )}
-        <dialog ref={dialogRef} onClose={() => setActive(null)}>
+        <dialog
+          ref={dialogRef}
+          onClose={() => {
+            if (!preview) navigate("/noticias");
+            else setActive(null);
+          }}
+        >
   {active && (
     <>
       <button

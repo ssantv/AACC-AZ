@@ -63,6 +63,7 @@ export default function App() {
         item.series === "cafe" && item.interviewee
           ? `Tomando un café con ${item.interviewee}`
           : item.title || (item.series === "cafe" ? "Tomando un café con..." : item.title),
+      slug: item.slug,
       excerpt: item.summary,
       body: item.body || [],
       cover:
@@ -211,6 +212,10 @@ export default function App() {
           <Route path="/hacemos" element={<Navigate to="/quienes" replace />} />
           <Route
             path="/noticias"
+            element={<News posts={posts} loaded={ready} />}
+          />
+          <Route
+            path="/noticias/:slug"
             element={<News posts={posts} loaded={ready} />}
           />
           <Route
